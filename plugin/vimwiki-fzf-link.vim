@@ -86,14 +86,16 @@ endfunction
 
 command! VimwikiFzfLink call s:vimwikiFzfLink()
 
-augroup VimwikiFzfLink
-    autocmd!
-    " autocmd BufEnter * call CheckVimwikiFzfLink()
+if !exists("no_plugin_maps") && !exists("vimwiki_fzf_link_no_maps")
+    augroup VimwikiFzfLink
+        autocmd!
+        " autocmd BufEnter * call CheckVimwikiFzfLink()
 
-    " unbind <CR> from vimwiki
-    autocmd FileType markdown nnoremap <buffer> łwf <Plug>VimwikiFollowLink
-    autocmd Filetype markdown nnoremap <buffer> <silent> <CR> :VimwikiFzfLink<CR>
-augroup END
+        " unbind <CR> from vimwiki
+        autocmd FileType markdown nnoremap <buffer> łwf <Plug>VimwikiFollowLink
+        autocmd Filetype markdown nnoremap <buffer> <silent> <CR> :VimwikiFzfLink<CR>
+    augroup END
+endif
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
