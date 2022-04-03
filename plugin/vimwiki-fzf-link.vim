@@ -1,7 +1,9 @@
 " Vim filetype plugin for creating vimwiki links with fzf
 " Last Change: 2022 April 01
 " Maintainer: Alexander Moortgat-Pick <moortgat.pick@gmail.com>
-" License: TODO
+" License: Copyright (c) Alexander Moortgat-Pick.
+"          Distributed under the same terms as Vim itself.
+"          see :help license
 
 if exists("g:loaded_vimwiki_fzf_link")
     finish
