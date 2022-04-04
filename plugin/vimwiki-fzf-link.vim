@@ -39,11 +39,12 @@ function! s:replaceVisualSelectionWithString(str)
     let selection=s:get_visual_selection()
 
     let [line_start, column_start] = getpos("'<")[1:2]
+    echom column_start
     let [line_end, column_end] = getpos("'>")[1:2]
     if line("'<") == line("'>")
         " only considered single line case
         let s = getline('.')
-        let s2 = (column_start>0 ? s[:column_start-2] : '')
+        let s2 = (column_start>1 ? s[:column_start-2] : '')
                     \ . a:str
                     \ . (column_end==-1 ? '' : s[column_end:])
         call setline(line_start, s2)
