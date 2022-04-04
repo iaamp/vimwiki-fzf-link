@@ -13,10 +13,15 @@ Instead, this plugin replaces the vimwiki function `VimwikiFollowLink` mapped to
 * elif cursor on word that is a link: call `vimwiki#base#follow_link` (same as `VimwikiFollowLink`
 * else return
 
-## Usage
-Simply press `<Enter>` to create a link.
+And for visual mode:
+* if selection is not a link: fzf based on selection
+* else return
 
-To disable the default key mapping, add
+## Usage
+Normal mode: Press `<Enter>` to create a link based on word under cursor.\
+Visual mode: Press '<Enter>' to create a link based on visual selection.
+
+To disable the default key mappings, add
 ```vim
 let g:vimwiki_fzf_link_no_maps=1 " disable vimwiki_fzf_link mapping
 ```
@@ -29,6 +34,7 @@ to your `.vimrc`.
 New mappings can be defined like so:
 ```vim
 autocmd Filetype markdown nnoremap <buffer> <silent> <YOUR-MAPPING> :VimwikiFzfLink<CR>
+autocmd Filetype markdown vnoremap <buffer> <silent> <YOUR-MAPPING> :<C-U>VimwikiFzfLinkV<CR>
 ```
 
 ## Installation
@@ -47,7 +53,6 @@ Plug 'iaamp/vimwiki-fzf-link
 
 ## Known Limitations & Future Work
 * in non-vimwiki `markdown` files, the first use of `Enter` key is doing nothing (no default behaviour)
-* only normal mode
 * no case-resolution for existing and conflicting mappings
 * allow defining the source command for the search
 
